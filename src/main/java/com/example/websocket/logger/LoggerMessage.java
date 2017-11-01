@@ -1,5 +1,9 @@
 package com.example.websocket.logger;
 
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * Created by HuYanGuang on 2017/10/31.
  *
@@ -66,6 +70,16 @@ public class LoggerMessage {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getFormattedClassName() {
+        String formattedClassName = className;
+        if (Objects.nonNull(className) && className.length() >= 40) {
+            String[] packages = className.split("\\.");
+            formattedClassName = Stream.of(packages).limit(packages.length - 1).map(s -> s.substring(0, 1))
+                    .collect(Collectors.joining(".")).concat(".").concat(packages[packages.length - 1]);
+        }
+        return formattedClassName;
     }
 }
 
