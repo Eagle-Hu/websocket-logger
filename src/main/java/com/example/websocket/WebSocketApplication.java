@@ -34,7 +34,11 @@ public class WebSocketApplication {
 
     @Scheduled(fixedRate = 1000)
     public void outputLogger() {
-        logger.info("测试日志输出" + info++);
+        try {
+            Double.valueOf(String.valueOf(info++).concat("++"));
+        } catch (NumberFormatException e) {
+            logger.error(e.getMessage(), e);
+        }
     }
 
     /**
