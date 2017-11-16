@@ -11,6 +11,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            font-family: "Courier New";
         }
     </style>
 </head>
@@ -42,13 +43,16 @@
                         $("#log-container").find("div").append(content.timestamp + " ");
                     }
                     if (content.level) {
-                        $("#log-container").find("div").append("<span style='color: goldenrod'>" + content.level + "</span> --- [");
+                        $("#log-container").find("div").append("<span style='color: #a8c023'>" + content.level + "</span> ");
+                    }
+                    if (content.processId) {
+                        $("#log-container").find("div").append("<span style='color: #ae8abd'>" + content.processId + "</span> --- [");
                     }
                     if (content.threadName) {
                         $("#log-container").find("div").append(content.threadName + "] ");
                     }
-                    if (content.formattedClassName) {
-                        $("#log-container").find("div").append("<span style='color: darkcyan'>" + content.formattedClassName + "</span> : ");
+                    if (content.className) {
+                        $("#log-container").find("div").append("<span style='color: #289696'>" + content.className + "</span> : ");
                     }
                     if (content.body) {
                         $("#log-container").find("div").append(content.body + "<br/>");
