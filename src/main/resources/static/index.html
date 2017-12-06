@@ -43,7 +43,13 @@
                         $("#log-container").find("div").append(content.timestamp + " ");
                     }
                     if (content.level) {
-                        $("#log-container").find("div").append("<span style='color: #a8c023'>" + content.level + "</span> ");
+                        if ("ERROR" === content.level) {
+                            $("#log-container").find("div").append("<span style='color: #ff6b68'>" + content.level + "</span> ");
+                        } else if ("~WARN" === content.level) {
+                            $("#log-container").find("div").append("<span style='color: #d6be55'>" + content.level + "</span> ");
+                        } else {
+                            $("#log-container").find("div").append("<span style='color: #a8c023'>" + content.level + "</span> ");
+                        }
                     }
                     if (content.processId) {
                         $("#log-container").find("div").append("<span style='color: #ae8abd'>" + content.processId + "</span> --- [");
